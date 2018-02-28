@@ -88,7 +88,6 @@ $not_in_post;
                                                     src="<?php bloginfo('stylesheet_directory'); ?>/images/down-arrow.png"/>
                                             </a>
                                         </div>
-
                                     </div>
                                 <?php endwhile; ?>
                             </div>
@@ -112,9 +111,11 @@ $not_in_post;
                                     </div>
                                     <div
                                         class="col-md-10 col-md-offset-2  col-sm-12 dektop-table-cell author-image-text">
-                                        <article>
-                                            <?php the_content(); ?>
-                                        </article>
+                                        <?php if (get_field('interviewee_introduction')): ?>
+                                            <article>
+                                                <?php the_field("interviewee_introduction"); ?>
+                                            </article>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php } elseif ($orientation == "Horizontal") { ?>
@@ -129,9 +130,11 @@ $not_in_post;
                                     </div>
                                     <div
                                         class="col-md-10 col-md-offset-2  col-sm-12 dektop-table-cell author-image-text">
-                                        <article>
-                                            <?php the_content(); ?>
-                                        </article>
+                                        <?php if (get_field('interviewee_introduction')): ?>
+                                            <article>
+                                                <?php the_field("interviewee_introduction"); ?>
+                                            </article>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php }
@@ -146,17 +149,9 @@ $not_in_post;
                     <div class="row">
                         <div class="col-md-9">
                             <div class="post-content">
-                                <?php if (have_rows('post_content')): ?>
+                                <?php if (get_field('quick_read')): ?>
                                     <article>
-                                        <?php while (have_rows('post_content')): the_row(); ?>
-                                            <?php $value = get_sub_field('include_this_in_short_read');
-                                            if (is_array($value) && in_array('yes', $value)) { ?>
-                                                <h4><?php the_sub_field('question'); ?></h4>
-                                                <?php the_sub_field('answers'); ?>
-                                            <?php } else {
-
-                                            } ?>
-                                        <?php endwhile; ?>
+                                        <?php the_field("quick_read"); ?>
                                     </article>
                                 <?php endif; ?>
                                 <div class="unspoool-content">

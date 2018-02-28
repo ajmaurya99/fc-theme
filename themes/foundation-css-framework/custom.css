@@ -1,0 +1,217 @@
+
+/* ------------------------------ Set Background - Margin Top, Bottom ------------------------------ */
+
+body {
+	background: #fefefe;
+}
+
+#page{
+	position: relative;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+/* ------------------------------ Set Font all site ------------------------------ */
+
+html,
+
+button,
+input,
+optgroup,
+select,
+textarea,
+
+body,
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+
+	font-family: 'Saira Semi Condensed', sans-serif;
+
+}
+
+
+
+/* ------------------------------ Link color ------------------------------ */
+
+
+a {
+	color: #1779ba;
+}
+
+a:visited {
+	color: #800080;
+}
+
+a:active {
+	color: #191970;
+}
+
+a:hover, a:focus {
+	color: #1468a0;
+}
+
+
+
+/* ------------------------------ Mod Dot for Main menu ------------------------------ */
+
+
+.iot-dot-menu-a::after {
+
+	content: " \002B";
+
+}
+
+.iot-dot-menu ul .iot-dot-menu-a::after {
+
+	content: " \00BB";
+
+}
+
+
+.main-navigation ul ul{
+	background: #fff;
+	box-shadow: -1px 1px 0px rgba(0, 0, 0, 0.07);
+}
+
+
+
+/* ------------------------------ Dashicons ------------------------------ */
+
+
+.dashicons, .dashicons-before:before {
+	display: inherit;
+	width: inherit;
+	height: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	font-family: dashicons;
+	text-decoration: inherit;
+	font-weight: inherit;
+	font-style: inherit;
+	vertical-align: inherit;
+	text-align: inherit;
+}
+
+
+
+
+/* ------------------------------ Offcanvas menu ------------------------------ */
+
+
+#iot-menu-left{
+	overflow-y: auto;
+	position:fixed;
+	height: 100%;
+	width: 250px;
+	left: -250px;
+	top:0;
+	background: #fff;
+	z-index: 6;
+}
+
+
+.iot-menu-left-filter {
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 5;
+	left: -100%;
+	background-color: rgba(0,0,0,.68);
+}
+
+
+
+/* Menu Left style */
+
+.iot-menu-left-ul{
+	margin-top: 10px;
+}
+
+.iot-menu-left-ul a{
+	font-size: 18px;
+	font-weight: normal;
+}
+
+ul.iot-menu-left-ul, .iot-menu-left-ul ul{
+	line-height: 2.0;
+	list-style: none;
+}
+
+
+
+/* Close button style */
+
+.iot-menu-left-close{
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 10px;
+	font-size: 32px;
+}
+
+
+
+/* Toggle button */
+
+.iot-menu-left-open {
+	position: absolute;
+	top: 0;
+	right: 0;
+	line-height: 1;
+	text-decoration: none;
+	padding: 0.7rem 1rem;
+	display: none;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 63.9375em) {
+
+	#primary-menu{
+		display: none;
+	}
+
+	.iot-menu-left-open {
+		display: block;
+	}
+
+}
+
+
+
+/* ------------------------------ Your CSS here ------------------------------ */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------ Mobile CSS here ------------------------------ */
+
+
+
+/* Small only */
+@media screen and (max-width: 39.9375em) {}
+
+/* Medium and up */
+@media screen and (min-width: 40em) {}
+
+/* Medium only */
+@media screen and (min-width: 40em) and (max-width: 63.9375em) {}
+
+/* Large and up */
+@media screen and (min-width: 64em) {}
+
+/* Large only */
+@media screen and (min-width: 64em) and (max-width: 74.9375em) {}

@@ -8,20 +8,40 @@
  */
 
 get_header();
+
+/*
+ * @var  $not_in_post
+ * Excludes the same post to appear in the sidebar
+ */
 $not_in_post;
 ?>
 
     <main id="main" class="site-main" role="main">
         <?php
         while (have_posts()) : the_post(); ?>
+            <?php
+            /**
+             * This function is documented in functions.php
+             */
+            ?>
             <?php wpb_get_post_views(get_the_ID());
+
+            // Get's the id of the current post.
             $not_in_post = get_the_ID();
             ?>
             <div class="sidebar-offset">
                 <div class="container">
-                    <?php if (have_rows('interviewee_info')): ?>
+                    <?php
+                    /*
+                     * have_rows($field_name, [$post_id]);
+                     * This function is used to loop over a repeater or flexible content field's value
+                     * Here the repeater field is 'interviewee_info'
+                     */
+                    if (have_rows('interviewee_info')):
+                        ?>
                         <div class="post-header-info post-info display-table">
                             <div class="table-cell">
+                                <?php // start loop  ?>
                                 <?php while (have_rows('interviewee_info')): the_row() ?>
                                     <div class="post-header-info-desktop">
                                         <p>
@@ -82,7 +102,7 @@ $not_in_post;
 
                                         </div>
                                         <div class="scroll-down">
-                                            <a href="#scrollto" >
+                                            <a href="#scrollto">
                                                 <img
                                                     src="<?php bloginfo('stylesheet_directory'); ?>/images/down-arrow.png"/>
                                             </a>
@@ -110,9 +130,11 @@ $not_in_post;
                                     </div>
                                     <div
                                         class="col-md-10 col-md-offset-2  col-sm-12 dektop-table-cell author-image-text">
-                                        <article>
-                                            <?php the_content(); ?>
-                                        </article>
+                                        <?php if (get_field('interviewee_introduction')): ?>
+                                            <article>
+                                                <?php the_field("interviewee_introduction"); ?>
+                                            </article>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php } elseif ($orientation == "Horizontal") { ?>
@@ -127,9 +149,11 @@ $not_in_post;
                                     </div>
                                     <div
                                         class="col-md-10 col-md-offset-2  col-sm-12 dektop-table-cell author-image-text">
-                                        <article>
-                                            <?php the_content(); ?>
-                                        </article>
+                                        <?php if (get_field('interviewee_introduction')): ?>
+                                            <article>
+                                                <?php the_field("interviewee_introduction"); ?>
+                                            </article>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             <?php }
@@ -145,14 +169,9 @@ $not_in_post;
                     <div class="row">
                         <div class="col-md-9">
                             <div class="post-content">
-                                <?php if (have_rows('post_content')): ?>
-                                    <article>
-                                        <?php while (have_rows('post_content')): the_row(); ?>
-                                            <h4><?php the_sub_field('question'); ?></h4>
-                                            <?php the_sub_field('answers'); ?>
-                                        <?php endwhile; ?>
-                                    </article>
-                                <?php endif; ?>
+                                <article>
+                                    <?php the_content(); ?>
+                                </article>
                                 <div class="unspoool-content">
                                     <h3 class="heading montserrat-font">
                                         Unspool
@@ -176,7 +195,6 @@ $not_in_post;
                 ?>
 
                 <!--  Next Post  End  -->
-
 
 
                 <!--

@@ -1,14 +1,19 @@
 /*
-Theme Name: The spool
+Theme Name: The Spool
 Theme URI: https://thespool.in/
 Author: Flying Cursor
-Author URI: http://flyingcursor.com/a
-Description: Description
+Author URI: http://flyingcursor.com/
+Description: WordPress theme framework with Custom Menu, Header and Background along with Logo, Favicon,
+ Featured Image, Google Custom Fonts Integration and more options. Based on Underscores, Foundation CSS framework,
+ SAAS based CSS preprocessor.
+ This theme comes with free technical support by team of 3+ full-time developers.
 Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: the-spool
-Tags:
+Tags:  blue, white, light, one-column, two-columns, right-sidebar,
+ custom-logo, custom-menu, theme-options, threaded-comments,
+  responsive-layout, full-width-template, blog, news, interview
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -18,6 +23,7 @@ Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
+
 */
 /*--------------------------------------------------------------
 >>> TABLE OF CONTENTS:
@@ -41,14 +47,22 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 	## Captions
 	## Galleries
 --------------------------------------------------------------*/
+
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,900|Vollkorn:400,400i,700,700i');
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
 
-html, body {
+html,
+body {
   height: 100%;
 }
+
+// Define theme color variable
+$theme-color: #311b92;
 
 .montserrat-font {
   font-family: 'Montserrat', sans-serif;
@@ -58,18 +72,8 @@ html, body {
   font-family: 'Vollkorn', serif;
 }
 
-$theme-color: #311b92;
-
-//.site-content {
-//  padding: 15px;
-//}
-
-html {
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-}
-
-textarea:focus, input:focus {
+textarea:focus,
+input:focus {
   outline: none;
 }
 
@@ -77,15 +81,30 @@ body {
   margin: 0;
   font-size: 18px;
   p {
+    font-family: 'Vollkorn', serif;
     font-size: 18px;
   }
 }
 
-article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
   display: block;
 }
 
-audio, canvas, progress, video {
+audio,
+canvas,
+progress,
+video {
   display: inline-block;
   vertical-align: baseline;
 }
@@ -95,31 +114,26 @@ audio:not([controls]) {
   height: 0;
 }
 
-[hidden], template {
+[hidden],
+template {
   display: none;
 }
 
-a, a:active, a:focus {
-  color: #311b92;
+a,
+a:active,
+a:focus {
   outline: none !important;
-}
-
-a {
-  background-color: transparent;
   text-decoration: none;
-  outline: none;
-  &:active, &:hover {
-    outline: none;
-    outline: 0;
-    text-decoration: none;
-  }
+  background-color: transparent;
+  color: #311b92;
 }
 
 abbr[title] {
   border-bottom: 1px dotted;
 }
 
-b, strong {
+b,
+strong {
   font-weight: bold;
 }
 
@@ -128,7 +142,7 @@ dfn {
 }
 
 mark {
-  background: #ff0;
+  background: #311b92;
   color: #000;
 }
 
@@ -137,17 +151,17 @@ small {
 }
 
 sub {
+  vertical-align: baseline;
+  position: relative;
   font-size: 75%;
   line-height: 0;
-  position: relative;
-  vertical-align: baseline;
 }
 
 sup {
+  vertical-align: baseline;
+  position: relative;
   font-size: 75%;
   line-height: 0;
-  position: relative;
-  vertical-align: baseline;
   top: -0.5em;
 }
 
@@ -176,14 +190,21 @@ pre {
   overflow: auto;
 }
 
-code, kbd, pre, samp {
+code,
+kbd,
+pre,
+samp {
   font-size: 1em;
 }
 
-button, input, optgroup, select, textarea {
-  color: inherit;
-  font: inherit;
+button,
+input,
+optgroup,
+select,
+textarea {
   margin: 0;
+  font: inherit;
+  color: inherit;
 }
 
 button {
@@ -195,7 +216,8 @@ select {
   text-transform: none;
 }
 
-button, html input[type="button"] {
+button,
+html input[type="button"] {
   -webkit-appearance: button;
   cursor: pointer;
 }
@@ -207,7 +229,8 @@ input {
   }
 }
 
-button[disabled], html input[disabled] {
+button[disabled],
+html input[disabled] {
   cursor: default;
 }
 
@@ -262,7 +285,8 @@ table {
   border-spacing: 0;
 }
 
-td, th {
+td,
+th {
   padding: 0;
 }
 
@@ -270,13 +294,22 @@ td, th {
 # Typography
 --------------------------------------------------------------*/
 
-body, button, input, select, textarea, nav {
+body,
+button,
+input,
+select,
+textarea,
+nav {
   font-family: 'Vollkorn', serif;
   color: #000;
   line-height: 1.5;
 }
 
-h2, h3, h4, h5, h6 {
+h2,
+h3,
+h4,
+h5,
+h6 {
   clear: both;
   font-family: 'Vollkorn', serif;
   font-weight: bold;
@@ -304,12 +337,10 @@ h2 {
   }
 }
 
-p {
-  font-family: 'Vollkorn', serif;
-  font-size: 18px;
-}
-
-dfn, cite, em, i {
+dfn,
+cite,
+em,
+i {
   font-style: italic;
 }
 
@@ -330,22 +361,24 @@ address {
 }
 
 pre {
+  max-width: 100%;
+  margin-bottom: 1.6em;
+  padding: 1.6em;
   background: #eee;
   font-size: 15px;
   font-size: 0.9375rem;
   line-height: 1.6;
-  margin-bottom: 1.6em;
-  max-width: 100%;
   overflow: auto;
-  padding: 1.6em;
 }
 
-abbr, acronym {
+abbr,
+acronym {
   border-bottom: 1px dotted #666;
   cursor: help;
 }
 
-mark, ins {
+mark,
+ins {
   background: #fff9c0;
   text-decoration: none;
 }
@@ -393,13 +426,14 @@ blockquote, q {
 }
 
 hr {
-  background-color: #ccc;
-  border: 0;
   height: 1px;
   margin-bottom: 1.5em;
+  border: 0;
+  background-color: #ccc;
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0 0 1.5em 3em;
 }
 
@@ -412,7 +446,8 @@ ol {
 }
 
 li > {
-  ul, ol {
+  ul,
+  ol {
     margin-bottom: 0;
     margin-left: 1.5em;
   }
@@ -439,8 +474,8 @@ figure {
 }
 
 table {
-  margin: 0 0 1.5em;
   width: 100%;
+  margin: 0 0 1.5em;
 }
 
 /*--------------------------------------------------------------
@@ -448,6 +483,7 @@ table {
 --------------------------------------------------------------*/
 
 button {
+  padding: .6em 1em .4em;
   border: 1px solid;
   border-color: #ccc #ccc #bbb;
   border-radius: 3px;
@@ -456,11 +492,15 @@ button {
   font-size: 12px;
   font-size: 0.75rem;
   line-height: 1;
-  padding: .6em 1em .4em;
+}
+
+button:hover {
+  border-color: #ccc #bbb #aaa;
 }
 
 input {
   &[type="button"], &[type="reset"], &[type="submit"] {
+    padding: .6em 1em .4em;
     border: 1px solid;
     border-color: #ccc #ccc #bbb;
     border-radius: 3px;
@@ -469,12 +509,8 @@ input {
     font-size: 12px;
     font-size: 0.75rem;
     line-height: 1;
-    padding: .6em 1em .4em;
-  }
-}
 
-button:hover {
-  border-color: #ccc #bbb #aaa;
+  }
 }
 
 input {
@@ -502,18 +538,18 @@ input {
     border-color: #aaa #bbb #bbb;
   }
   &[type="text"], &[type="email"], &[type="url"], &[type="password"], &[type="search"], &[type="number"], &[type="tel"], &[type="range"], &[type="date"], &[type="month"], &[type="week"], &[type="time"], &[type="datetime"], &[type="datetime-local"], &[type="color"] {
-    color: #666;
+    padding: 3px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    padding: 3px;
+    color: #666;
   }
 }
 
 textarea {
-  color: #666;
+  padding: 3px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  padding: 3px;
+  color: #666;
 }
 
 select {
@@ -561,9 +597,9 @@ a {
 --------------------------------------------------------------*/
 
 .main-navigation {
-  clear: both;
   display: block;
   float: left;
+  clear: both;
   width: 100%;
   ul {
     display: none;
@@ -580,12 +616,12 @@ a {
     text-decoration: none;
   }
   ul ul {
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-    float: left;
     position: absolute;
+    float: left;
     top: 1.5em;
     left: -999em;
     z-index: 99999;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
     ul {
       left: -999em;
       top: 0;
@@ -620,13 +656,17 @@ a {
       }
     }
   }
-  .current_page_item > a, .current-menu-item > a, .current_page_ancestor > a, .current-menu-ancestor > a {
+  .current_page_item > a,
+  .current-menu-item > a,
+  .current_page_ancestor > a,
+  .current-menu-ancestor > a {
   }
 }
 
 /* Small menu. */
 
-.menu-toggle, .main-navigation.toggled ul {
+.menu-toggle,
+.main-navigation.toggled ul {
   display: block;
 }
 
@@ -640,21 +680,27 @@ a {
 }
 
 .site-main {
-  .comment-navigation, .posts-navigation, .post-navigation {
+  .comment-navigation,
+  .posts-navigation,
+  .post-navigation {
     margin: 0 0 1.5em;
     overflow: hidden;
   }
 }
 
-.comment-navigation .nav-previous, .posts-navigation .nav-previous, .post-navigation .nav-previous {
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous,
+.post-navigation .nav-previous {
   float: left;
   width: 50%;
 }
 
-.comment-navigation .nav-next, .posts-navigation .nav-next, .post-navigation .nav-next {
+.comment-navigation .nav-next,
+.posts-navigation .nav-next,
+.post-navigation .nav-next {
   float: right;
-  text-align: right;
   width: 50%;
+  text-align: right;
 }
 
 /*--------------------------------------------------------------
@@ -732,9 +778,9 @@ a {
 
 .clear {
   &:before, &:after {
-    content: "";
     display: table;
     table-layout: fixed;
+    content: "";
   }
 }
 
@@ -748,9 +794,9 @@ a {
 
 .site-content {
   &:before, &:after {
-    content: "";
     display: table;
     table-layout: fixed;
+    content: "";
   }
 }
 
@@ -762,7 +808,12 @@ a {
   }
 }
 
-.clear:after, .entry-content:after, .comment-content:after, .site-header:after, .site-content:after, .site-footer:after {
+.clear:after,
+.entry-content:after,
+.comment-content:after,
+.site-header:after,
+.site-content:after,
+.site-footer:after {
   clear: both;
 }
 
@@ -790,7 +841,9 @@ a {
 
 /* Make sure embeds and iframes fit their containers. */
 
-embed, iframe, object {
+embed,
+iframe,
+object {
   max-width: 100%;
 }
 
@@ -804,12 +857,12 @@ embed, iframe, object {
 }
 
 h1.heading.logo {
-  color: #000;
-  text-align: center;
   max-width: 209px;
   margin: 0 auto;
   margin-top: 18px;
   margin-bottom: 18px;
+  color: #000;
+  text-align: center;
   transition: all .35s ease;
   a {
     text-decoration: none;
@@ -822,7 +875,6 @@ h1.heading.logo {
       margin: 0 auto;
     }
   }
-
 }
 
 .main-menu.active h1.heading {
@@ -849,9 +901,9 @@ h3.post-heading {
   text-align: center;
   h3.heading {
     &.author-name {
-      color: #000;
-      font-size: 24px;
       margin-bottom: 8px;
+      font-size: 24px;
+      color: #000;
       @media all and (min-width: 768px) {
         font-size: 38px;
       }
@@ -885,11 +937,11 @@ h3.post-heading {
 
 .btn.btn-spool {
   font-family: 'Montserrat', sans-serif;
-  background: #000;
   border-radius: 0;
-  text-transform: capitalize;
+  background: #000;
   color: #fff;
   font-size: 16px;
+  text-transform: capitalize;
 }
 
 /*--------------------------------------------------------------
@@ -902,10 +954,10 @@ h3.post-heading {
   .post-header-info-desktop {
     width: 100%;
     @media all and(min-width: 768px) {
-      width: 60%;
       display: block;
       margin: 0 auto;
       margin-top: 15px;
+      width: 60%;
     }
     p {
       text-align: center;
@@ -916,8 +968,8 @@ h3.post-heading {
 .post-content {
   color: #000;
   h4 {
-    font-size: 18px;
     margin-top: 25px;
+    font-size: 18px;
     line-height: 140%;
     @media all and(min-width: 768px) {
       margin-top: 30px;
@@ -930,8 +982,8 @@ h3.post-heading {
     }
   }
   p {
-    font-size: 18px;
     color: #000;
+    font-size: 18px;
     line-height: 160%;
     @media all and(min-width: 1367px) {
       font-size: 20px;
@@ -940,9 +992,9 @@ h3.post-heading {
   blockquote {
     border-left: 5px solid #311b92;
     p {
+      color: #311b92;
       font-weight: bold;
       font-size: 30px;
-      color: #311b92;
       line-height: 130%;
       span {
         font-weight: bold !important;
@@ -957,17 +1009,17 @@ h3.post-heading {
     h3.heading {
       margin: 0;
       padding: 10px;
-      font-size: 18px;
-      background: #311b92;
       max-width: 125px;
-      text-align: center;
+      background: #311b92;
       color: #fff;
+      font-size: 18px;
+      text-align: center;
     }
     margin-top: 50px;
   }
   .highlight-info {
-    border: 2px solid #311b92;
     padding: 20px;
+    border: 2px solid #311b92;
     color: #311b92;
     font-size: 18px;
     @media all and (min-width: 768px) {
@@ -998,20 +1050,20 @@ h3.post-heading {
       }
       &.desktop-image {
         position: absolute;
-        z-index: 100;
         top: 50%;
         left: 5%;
+        z-index: 100;
         @media all and (min-width: 1367px) {
-          max-width: 500px;
           margin-top: -378px;
+          max-width: 500px;
         }
         @media all and (min-width: 1200px) and (max-width: 1367px) {
-          max-width: 350px;
           margin-top: -265px;
+          max-width: 350px;
         }
         @media all and (min-width: 1000px) and (max-width: 1200px) {
-          max-width: 275px;
           margin-top: -207px;
+          max-width: 275px;
         }
         @media all and (max-width: 1000px) {
           display: none;
@@ -1045,20 +1097,20 @@ h3.post-heading {
       }
       &.desktop-image {
         position: absolute;
-        z-index: 100;
         top: 50%;
         left: 5%;
+        z-index: 100;
         @media all and (min-width: 1601px) {
-          max-width: 750px;
           margin-top: -250px;
+          max-width: 750px;
         }
         @media all and (min-width: 1200px) and (max-width: 1600px) {
-          max-width: 600px;
           margin-top: -200px;
+          max-width: 600px;
         }
         @media all and (min-width: 1000px) and (max-width: 1200px) {
-          max-width: 400px;
           margin-top: -133px;
+          max-width: 400px;
         }
         @media all and (max-width: 1000px) {
           display: none;
@@ -1092,8 +1144,6 @@ h3.post-heading {
       p {
         font-family: 'Montserrat', sans-serif;
         color: #fff;
-        font-size: 15px;
-        letter-spacing: 0.3px;
         line-height: 180%;
         font-size: 16px;
         letter-spacing: 0.5px;
@@ -1157,10 +1207,10 @@ h3.post-heading {
 --------------------------------------------------------------*/
 .related-articles {
   h5.heading {
+    margin: 15px 0;
     font-size: 16px;
     text-align: center;
     font-weight: bold;
-    margin: 15px 0;
     @media (min-width: 768px) {
       margin: 40px 0;
     }
@@ -1175,19 +1225,19 @@ h3.post-heading {
     }
     .caption {
       h3.heading {
+        margin-top: 12px;
         text-align: center;
         color: #000;
         font-size: 18px;
-        margin-top: 12px;
         @media all and (min-width: 768px) {
-          font-size: 20px;
           margin-top: 18px;
+          font-size: 20px;
         }
         span {
+          display: block;
+          padding-top: 7px;
           font-style: italic;
           font-size: 18px;
-          padding-top: 7px;
-          display: block;
           font-weight: normal;
           @media all and (min-width: 768px) {
             font-size: 16px;
@@ -1221,9 +1271,9 @@ h3.post-heading {
 .footer-info {
   margin-bottom: 25px;
   & > hr {
-    background-color: #000;
-    height: 1px;
     margin: 20px 0;
+    height: 1px;
+    background-color: #000;
     @media (min-width: 768px) {
       margin: 35px 0;
     }
@@ -1241,9 +1291,9 @@ h3.post-heading {
     }
   }
   ul {
+    display: block;
     margin: 20px 0;
     padding: 0;
-    display: block;
     @media all and (min-width: 768px) {
       display: inline-block;
     }
@@ -1287,15 +1337,15 @@ h3.post-heading {
   header {
     background-color: #311b92;
     h2.heading {
-      width: 100%;
-      text-align: center;
+      display: inline-block;
       margin: 0 auto;
       padding: 150px 10px 100px 10px;
-      display: inline-block;
+      width: 100%;
+      text-align: center;
       @media (min-width: 768px) {
         display: block;
-        width: 60%;
         padding: 125px 0px 100px 0px;
+        width: 60%;
       }
       span {
         display: inline;
@@ -1322,14 +1372,11 @@ h3.post-heading {
           font-size: 24px;
         }
         span {
+          display: block;
+          padding-top: 7px;
           font-style: italic;
           font-size: 18px;
-          padding-top: 7px;
-          display: block;
           font-weight: normal;
-          @media all and (min-width: 768px) {
-
-          }
         }
       }
       p.spool-btn-group {
@@ -1340,7 +1387,6 @@ h3.post-heading {
         }
       }
     }
-
     margin: 10px 0;
   }
 }
@@ -1422,36 +1468,36 @@ $button-width: 30px;
 
 .navbar-expand {
   position: relative;
+  margin-top: 18px;
   height: $button-height;
   width: $button-width;
   cursor: pointer;
   z-index: 100;
-  margin-top: 18px;
   transition: opacity .25s ease;
 
   &.active {
     .top {
-      transform: translateY(9px) translateX(0) rotate(45deg);
       background: #fff !important;
+      transform: translateY(9px) translateX(0) rotate(45deg);
     }
     .middle {
-      opacity: 0;
       background: #fff !important;
+      opacity: 0;
     }
     .bottom {
-      transform: translateY(-9px) translateX(0) rotate(-45deg);
       background: #fff !important;
+      transform: translateY(-9px) translateX(0) rotate(-45deg);
     }
   }
 
   span {
-    background: #121212;
-    border: none;
+    position: absolute;
     height: 2px;
     width: 100%;
-    position: absolute;
     top: 0;
     left: 0;
+    border: none;
+    background: #121212;
     transition: all .35s ease;
     cursor: pointer;
 
@@ -1475,16 +1521,15 @@ $button-width: 30px;
 
 .overlay {
   position: fixed;
-  background: $color-main;
   top: 0;
   left: 0;
   width: 100%;
   height: 0%;
+  background: $color-main;
   opacity: 0;
   visibility: hidden;
-  transition: opacity .35s, visibility .35s, height .35s;
   overflow: hidden;
-
+  transition: opacity .35s, visibility .35s, height .35s;
   &.open {
     opacity: 1;
     visibility: visible;
@@ -1509,38 +1554,37 @@ $button-width: 30px;
     position: relative;
     height: 70%;
     top: 60%;
-    transform: translateY(-50%);
     font-size: 50px;
     font-weight: 400;
     text-align: center;
+    transform: translateY(-50%);
   }
   ul {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto;
     display: inline-block;
     position: relative;
+    margin: 0 auto;
+    padding: 0;
     height: 100%;
-
+    list-style: none;
     li {
-
       display: block;
       position: relative;
       opacity: 0;
 
       a {
-        font-family: 'Vollkorn', serif;
-        font-weight: 800;
         display: block;
         position: relative;
+        padding: 10px 0;
+        font-family: 'Vollkorn', serif;
+        font-weight: 800;
+        font-size: 24px;
         color: $color-link;
         text-decoration: none;
         overflow: hidden;
-        font-size: 24px;
-        padding: 10px 0;
+
         @media all and (min-width: 768px) {
-          font-size: 32px;
           padding: 15px 0;
+          font-size: 32px;
         }
         &:hover {
           color: #d0d0d0;
@@ -1583,9 +1627,9 @@ progress {
 
 /* Mailchimp Styling */
 .email-signup {
+  margin: 0 auto;
   padding: 45px 5px;
   max-width: 250px;
-  margin: 0 auto;
   background: #311b92;
   p {
     text-align: center;
@@ -1598,24 +1642,23 @@ progress {
   .mc4wp-form-fields {
     padding-top: 25px;
     input[type="email"] {
+      padding: 8px;
+      width: 85%;
       border: 0;
       border-radius: 0;
       color: #311b92;
       text-align: center;
       font-family: 'Montserrat', sans-serif;
-      width: 85%;
-      padding: 8px;
     }
     input[type="submit"] {
       padding-top: 15px;
-      background: transparent;
       border: 0;
+      background: transparent;
       color: #fff;
       font-size: 18px;
     }
   }
   .mc4wp-alert.mc4wp-success p {
-
     color: #fff;
     font-size: 15px;
   }
@@ -1644,17 +1687,19 @@ progress {
   }
 }
 
-/*   Post Timings  */
+/*--------------------------------------------------------------
+# Post Timings
+--------------------------------------------------------------*/
+
 .post-timing {
   margin: 20px;
   ul {
+    margin: 0;
     padding: 0;
     list-style-type: none;
-    margin: 0;
     li {
-      margin: 0 15px;
-      display: inline-block;
       margin: 5px 15px;
+      display: inline-block;
       a {
         font-family: 'Montserrat', sans-serif;
         font-size: 14px;
@@ -1664,15 +1709,17 @@ progress {
         }
       }
       &.active {
+        padding: 5px 15px;
         border: 1px solid #000;
         border-radius: 20px;
-        padding: 5px 15px;
       }
     }
   }
 }
 
-/* Post Share Buttons */
+/*--------------------------------------------------------------
+# Post Share Buttons
+--------------------------------------------------------------*/
 
 .share-this-post {
   p {
@@ -1688,7 +1735,10 @@ progress {
   }
 }
 
-/* Change logo on home page */
+/*--------------------------------------------------------------
+# Change logo on home page
+--------------------------------------------------------------*/
+
 .white-logo {
   display: none;
 }
@@ -1697,18 +1747,20 @@ progress {
   .logo {
     .white-logo {
       display: block;
-      transition: all .35s ease;
       margin: 0 auto;
+      transition: all .35s ease;
     }
     .black-logo {
       display: none;
-      transition: all .35s ease;
       margin: 0 auto;
+      transition: all .35s ease;
     }
   }
 }
 
-/* About  Page */
+/*--------------------------------------------------------------
+# About  Page
+--------------------------------------------------------------*/
 
 .about-wrapper {
   p.about-info {
@@ -1716,29 +1768,35 @@ progress {
   }
 }
 
-/* Sidebar Btn */
+/*--------------------------------------------------------------
+# Sidebar Button
+--------------------------------------------------------------*/
+
 .read-full-btn {
-  max-width: 250px;
   margin: 25px auto;
+  max-width: 250px;
   a.btn {
-    width: 100%;
     padding: 10px 0;
+    width: 100%;
   }
 }
 
-/* Font Sizes Button */
+/*--------------------------------------------------------------
+# Font Sizes Button Indicator
+--------------------------------------------------------------*/
+
 .fontsizes {
   margin-top: 18px;
   margin-bottom: 18px;
   transition: all .35s ease;
   span {
     display: inline-block;
+    padding: 0 0px 3px 7px;
     height: 25px;
     width: 25px;
     border-radius: 50%;
     -moz-border-radius: 50%;
     -webkit-border-radius: 50%;
-    padding: 0 0px 3px 7px;
     font-size: 18px;
     color: #000;
     border: 1px solid #000;
@@ -1779,9 +1837,11 @@ progress {
   }
 }
 
-/* Affis Fixed Sidebar
- http://stackoverflow.com/questions/17394854/how-can-i-disable-bootstraps-affix-on-smaller-screens
- */
+/*--------------------------------------------------------------
+# Affix Fixed Sidebar
+# http://stackoverflow.com/questions/17394854/how-can-i-disable-bootstraps-affix-on-smaller-screens
+--------------------------------------------------------------*/
+
 @media all and (min-width: 1024px) {
   .affix {
     position: fixed;
@@ -1802,8 +1862,11 @@ progress {
   }
 }
 
-/* Override table height */
-/*  About  page, Contact Page*/
+/*--------------------------------------------------------------
+# Override table height
+# About  page, Contact Page
+--------------------------------------------------------------*/
+
 @media all and (max-width: 768px) {
   body {
     &.page-id-54, &.page-id-80 {
@@ -1816,23 +1879,28 @@ progress {
   }
 }
 
-/* Scroll to top */
+/*--------------------------------------------------------------
+# Scroll to top
+--------------------------------------------------------------*/
 
 .scrolltotop {
-  background: transparent url('images/top.png') no-repeat scroll top left;
+  display: none;
   position: fixed;
-  z-index: 110;
   bottom: 20px;
   right: 20px;
   width: 30px;
   height: 30px;
-  display: none;
+  background: transparent url('images/top.png') no-repeat scroll top left;
+  z-index: 110;
   @media all and (max-width: 768px) {
     display: none !important;
   }
 }
 
-/* Scroll down */
+/*--------------------------------------------------------------
+# Scroll down
+--------------------------------------------------------------*/
+
 .scroll-down {
   padding-top: 10px;
   text-align: center;
@@ -1849,12 +1917,14 @@ progress {
   }
 }
 
-/* Popular Posts */
+/*--------------------------------------------------------------
+# Popular Posts
+--------------------------------------------------------------*/
 
 .popular-posts {
-  text-align: center;
-  max-width: 250px;
   margin: 25px auto;
+  max-width: 250px;
+  text-align: center;
   h3.heading {
     font-size: 24px;
   }
@@ -1862,24 +1932,27 @@ progress {
     margin: 20px 0 45px 0;
     .caption {
       span {
+        display: block;
+        padding-top: 7px;
         font-style: italic;
         font-size: 18px;
-        padding-top: 7px;
-        display: block;
         font-weight: normal;
       }
     }
   }
 }
 
-/* Coming Next */
+/*--------------------------------------------------------------
+# Coming Next details
+--------------------------------------------------------------*/
+
 .coming-next-details {
   text-align: center;
   span.font-change {
+    display: block;
+    padding-top: 7px;
     font-style: italic;
     font-size: 18px;
-    padding-top: 7px;
-    display: block;
     font-weight: normal;
   }
   h3.heading {
@@ -1890,7 +1963,10 @@ progress {
   }
 }
 
-/*Coming Next sidebar */
+/*--------------------------------------------------------------
+# Coming Next sidebar
+--------------------------------------------------------------*/
+
 .coming-next {
   max-width: 250px;
   margin: 0 auto;
@@ -1898,19 +1974,19 @@ progress {
 
 .caption {
   h3.heading {
+    margin-top: 12px;
     text-align: center;
     color: #000;
     font-size: 18px;
-    margin-top: 12px;
     @media all and (min-width: 768px) {
       font-size: 20px;
       margin-top: 18px;
     }
     span {
+      display: block;
+      padding-top: 7px;
       font-style: italic;
       font-size: 18px;
-      padding-top: 7px;
-      display: block;
       font-weight: normal;
       @media all and (min-width: 768px) {
         font-size: 16px;

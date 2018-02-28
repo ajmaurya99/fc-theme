@@ -7,8 +7,9 @@
  * @package The_spool
  */
 
+
 if (!function_exists('the_spool_setup')) :
-    /**
+    /*
      * Sets up theme defaults and registers support for various WordPress features.
      *
      * Note that this function is hooked into the after_setup_theme hook, which
@@ -17,14 +18,6 @@ if (!function_exists('the_spool_setup')) :
      */
     function the_spool_setup()
     {
-        /*
-         * Make theme available for translation.
-         * Translations can be filed in the /languages/ directory.
-         * If you're building a theme based on The spool, use a find and replace
-         * to change 'the-spool' to the name of your theme in all the template files.
-         */
-        load_theme_textdomain('the-spool', get_template_directory() . '/languages');
-
         // Add default posts and comments RSS feed links to head.
         add_theme_support('automatic-feed-links');
 
@@ -60,16 +53,39 @@ if (!function_exists('the_spool_setup')) :
             'caption',
         ));
 
+        /*
+         * Enable support for Post Formats.
+         *
+         * See: https://codex.wordpress.org/Post_Formats
+         */
+        add_theme_support('post-formats', array(
+            'aside',
+            'image',
+            'video',
+            'quote',
+            'link',
+            'gallery',
+            'audio',
+        ));
+
         // Set up the WordPress core custom background feature.
         add_theme_support('custom-background', apply_filters('the_spool_custom_background_args', array(
             'default-color' => 'ffffff',
             'default-image' => '',
         )));
 
+        // Add theme support for Custom Logo.
+        add_theme_support('custom-logo', array(
+            'width' => 402,
+            'height' => 73,
+            'flex-width' => true,
+        ));
+
         // Add theme support for selective refresh for widgets.
         add_theme_support('customize-selective-refresh-widgets');
     }
 endif;
+
 add_action('after_setup_theme', 'the_spool_setup');
 
 /**
@@ -87,8 +103,7 @@ function the_spool_content_width()
 add_action('after_setup_theme', 'the_spool_content_width', 0);
 
 /**
- * Register widget area.
- *
+ * Register widget area for the theme.
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function the_spool_widgets_init()
@@ -111,15 +126,66 @@ add_action('widgets_init', 'the_spool_widgets_init');
  */
 function the_spool_scripts()
 {
+    // Add custom fonts, used in the main stylesheet.
+    wp_enqueue_style('the_spool-google-fonts', 'https://fonts.googleapis.com/css?family=Montserrat:400,400i,900|Vollkorn:400,400i,700,700i', false);
 
+    // Register Theme stylesheet.
+
+    /*
+     * Enqueue Bootstrap 3.3 stylesheet
+     * @version 3.3.7
+     * @link http://getbootstrap.com/docs/3.3/
+     */
     wp_register_style('bootstrap-css', get_template_directory_uri() . '/css/bootstrap.min.css', array(), '3.3.7');
+
+    /*
+     * Enqueue fancybox 3 stylesheet
+     * @version 3.0.47
+     * @link https://fancyapps.com/fancybox/3/
+     */
     wp_register_style('fancybox-css', get_template_directory_uri() . '/css/jquery.fancybox.min.css', array(), '3.0.47');
+
+    // Enqueue Theme stylesheet.
     wp_enqueue_style('the-spool-style', get_stylesheet_uri(), array('bootstrap-css', 'fancybox-css'));
 
+    /**
+     * Load our IE specific stylesheet for a range of newer versions:
+     * <!--[if gt IE 8]> ... <![endif]-->
+     * <!--[if gte IE 9]> ... <![endif]-->
+     * NOTE: You can use the 'greater than' or the 'greater than or equal to' syntax here interchangeably.
+     */
+    if (is_customize_preview()) {
+        wp_enqueue_style('the-spool-ie9', get_template_directory_uri('/css/ie9.css'), array(), '1.0');
+        wp_style_add_data('the-spool-ie9', 'conditional', 'IE 9');
+    }
+
+    /**
+     * Load our IE specific stylesheet for a range of older versions:
+     * <!--[if lt IE 9]> ... <![endif]-->
+     * <!--[if lte IE 8]> ... <![endif]-->
+     * NOTE: You can use the 'less than' or the 'less than or equal to' syntax here interchangeably.
+     */
+    wp_enqueue_style('the-spool-ie8', get_template_directory_uri('/css/ie8.css'), array(), '1.0');
+    wp_style_add_data('the-spool-ie8', 'conditional', 'lt IE 9');
+
+    // Register Theme javascript.
+
+    /*
+     * Enqueue Bootstrap 3.3 javascript
+     * @version 3.3.7
+     * @link http://getbootstrap.com/docs/3.3/
+     */
     wp_register_script('bootstrap-js', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.2.0');
+
+    /*
+    * Enqueue fancybox 3 javascript
+    * @version 3.0.47
+    * @link https://fancyapps.com/fancybox/3/
+    */
     wp_register_script('fancybox-js', get_template_directory_uri() . '/js/jquery.fancybox.min.js', array('jquery'), '3.0.47');
-//    wp_register_script('the-spool-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true);
     wp_register_script('the-spool-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true);
+
+    // Enqueue Theme javascript.
     wp_enqueue_script('the-spool-script', get_template_directory_uri() . '/js/init.js', array('jquery', 'bootstrap-js', 'the-spool-skip-link-focus-fix', 'fancybox-js'), '1.2', true);
 
     if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -130,27 +196,21 @@ function the_spool_scripts()
 add_action('wp_enqueue_scripts', 'the_spool_scripts');
 
 
-/**
+/*
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
 
 
-/**
+/*
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
 
-/**
+/*
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
-
-/**
- *  Hide admin bar
- */
-
-add_filter('show_admin_bar', '__return_false');
 
 
 //Making jQuery Google API
@@ -166,12 +226,12 @@ function modify_jquery()
 
 add_action('init', 'modify_jquery');
 
-
-/* Choose Template based on user input
-http://scratch99.com/wordpress/development/how-to-change-post-template-via-url-parameter/
-https://developer.wordpress.org/reference/functions/add_query_arg/
+/*
+ * Choose long or short template file for single page.
+ * Based on user selection
+ * @link http://scratch99.com/wordpress/development/how-to-change-post-template-via-url-parameter/
+ * @link https://developer.wordpress.org/reference/functions/add_query_arg/
  */
-
 function the_spool_add_query_vars($vars)
 {
     return array('template') + $vars;
@@ -192,7 +252,7 @@ function the_spool_template($template)
 add_filter('single_template', 'the_spool_template');
 
 
-/*  Get page is from slug*/
+// Get page id  from slug
 function get_id_by_slug($page_slug)
 {
     $page = get_page_by_path($page_slug);
@@ -203,10 +263,11 @@ function get_id_by_slug($page_slug)
     }
 }
 
-/* Add Spool Logo on Login Page
-Reference - https://codex.wordpress.org/Customizing_the_Login_Form
- */
 
+/*
+ * Add Theme logo on the admin login page
+ * @link https://codex.wordpress.org/Customizing_the_Login_Form
+ */
 function my_login_logo_url()
 {
     return home_url();
@@ -223,7 +284,8 @@ add_filter('login_headertitle', 'my_login_logo_url_title');
 
 
 function my_login_logo()
-{ ?>
+{
+    ?>
     <style type="text/css">
         #login h1 a, .login h1 a {
             background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/SpoolLogoBlack.svg);
@@ -234,29 +296,24 @@ function my_login_logo()
             padding-bottom: 30px;
         }
     </style>
-<?php }
+    <?php
+}
 
 add_action('login_enqueue_scripts', 'my_login_logo');
 
-/* Display Most Popular Posts */
 
 /*
- *
-Show Popular Posts -
-http://www.wpbeginner.com/wp-tutorials/how-to-track-popular-posts-by-views-in-wordpress-without-a-plugin/
-
-*/
-
-
-/*
+ * Get most popular posts by views
+ * Post page displays top articles in the sidebar.
  * Set post views count using post meta
+ * @link http://www.wpbeginner.com/wp-tutorials/how-to-track-popular-posts-by-views-in-wordpress-without-a-plugin/
  */
 
 function wpb_set_post_views($postID)
 {
     $count_key = 'wpb_post_views_count';
     $count = get_post_meta($postID, $count_key, true);
-//    echo $count;
+    //echo $count;
     if ($count == '') {
         $count = 0;
         delete_post_meta($postID, $count_key);
@@ -267,7 +324,6 @@ function wpb_set_post_views($postID)
     }
 }
 
-//To keep the count accurate, lets get rid of prefetching
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 function wpb_get_post_views($postID)
@@ -295,11 +351,11 @@ function wpb_track_post_views($post_id)
 add_action('wp_head', 'wpb_track_post_views');
 
 
-/* Add Settings page
-https://www.sitepoint.com/create-a-wordpress-theme-settings-page-with-the-settings-api/
+/*
+ * Add theme settings page
+ * @Link https://www.sitepoint.com/create-a-wordpress-theme-settings-page-with-the-settings-api/
  */
-
-function theme_settings_page()
+function add_theme_settings_page()
 {
     ?>
     <div class="wrap">
@@ -318,14 +374,15 @@ function theme_settings_page()
 function add_theme_menu_item()
 {
     /*
-     * https://developer.wordpress.org/reference/functions/add_menu_page/
+     * Add theme menu page
+     * @link https://developer.wordpress.org/reference/functions/add_menu_page/
      */
-    add_menu_page("Spool Settings", "Spool Settings", "manage_options", "theme-panel", "theme_settings_page", null, 99);
+    add_menu_page("Spool Settings", "Spool Settings", "manage_options", "theme-panel", "add_theme_settings_page", null, 99);
 }
 
 add_action("admin_menu", "add_theme_menu_item");
 
-
+// Theme settings page options
 function display_facebook_element()
 {
     ?>
@@ -366,7 +423,6 @@ function display_heading_text()
     </textarea>
     <?php
 }
-
 
 function display_theme_panel_fields()
 {
