@@ -34,6 +34,11 @@ get_header(); ?>
 
                 </header>
                 <div class="container home-post-container" id="home-post-container">
+                    <?php
+                    if ( get_theme_mod( 'bwpy_page_comment_toggle' ) == 1 ) :
+                        echo get_theme_mod( 'bwpy_page_comment_toggle' );
+                    endif;
+                    ?>
                     <div class="row">
                         <?php
                         global $post;

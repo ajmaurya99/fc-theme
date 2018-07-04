@@ -25,7 +25,6 @@
                 $facebook_url = get_option('facebook_url');
                 $twitter_url = get_option('twitter_url');
                 $instagram_url = get_option('instagram_url');
-                $footer_text = get_option('footer_text');
                 ?>
                 <li><a href="<?php echo $facebook_url; ?>" target="_blank" title="Facebook The Spool"><i
                             class="fa fa-facebook" aria-hidden="true"
@@ -38,13 +37,24 @@
                             aria-label="Instagram"></i></a></li>
                 <!--  <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true" aria-label="You Tube"></i></a></li> -->
             </ul>
-            <p class="montserrat-font"><?php  echo $footer_text;?></p>
+            <p class="montserrat-font">
+                <?php
+                /*
+                 * Footer Copyright Text
+                 * Section  - footer_section
+                 * @link http://themefoundation.com/wordpress-theme-customizer/
+                 */
+                ?>
+                <?php if (get_theme_mod('copyright_textbox')) { ?>
+                    <?php echo get_theme_mod('copyright_textbox', 'No copyright information has been saved yet.'); ?>
+                <?php } ?>
+            </p>
         </div><!-- .site-info -->
     </footer><!-- #colophon -->
 </div><!-- #container -->
 </div><!-- row -->
 </div><!-- #page -->
-<a href="#" class="scrolltotop" ></a>
+<a href="#" class="scrolltotop"></a>
 <?php wp_footer(); ?>
 
 </body>

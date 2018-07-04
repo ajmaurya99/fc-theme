@@ -37,7 +37,7 @@
           type="text/css"/>
 
     <?php wp_head(); ?>
-    
+
     <?php if ($_SERVER['HTTP_HOST'] === "thespool.in" || $_SERVER['HTTP_HOST'] === "www.thespool.in") { ?>
         <script>
             (function (i, s, o, g, r, a, m) {
@@ -151,12 +151,18 @@
                     </div>
                     <div class="col-md-4 col-xs-4">
                         <h1 class="heading logo">
-                            <a rel="home" href="<?php bloginfo('url'); ?>" title="The Spool">
-                                <img src="<?php bloginfo('stylesheet_directory'); ?>/images/SpoolLogoBlack.svg"
-                                     class="black-logo" title="The Spool">
-                                <img src="<?php bloginfo('stylesheet_directory'); ?>/images/SpoolLogoWhite.svg"
-                                     class="white-logo" title="The Spool">
-                            </a>
+                            <?php
+                            $pri_logo_id = get_theme_mod('custom_logo');
+                            $pri_logo = wp_get_attachment_image_src($pri_logo_id, 'full');
+                            ?>
+                            <?php if ($pri_logo || $sec_logo): ?>
+                                <a rel="home" href="
+                                     <?php bloginfo('url'); ?>" title="The Spool">
+                                    <img src="
+                            <?php echo $pri_logo[0]; ?>"
+                                         class="site-logo" title="The Spool">
+                                </a>
+                            <?php endif; ?>
                         </h1>
                     </div>
                     <div class="col-md-4 col-xs-4">
@@ -177,13 +183,15 @@
             </div>
         </nav>
 
-        <?php /* <header id="masthead" class="site-header" role="banner">
+        <?php
+        /* <header id="masthead" class="site-header" role="banner">
 
         <nav id="site-navigation" class="main-navigation" role="navigation">
             <button class="menu-toggle" aria-controls="primary-menu"
                     aria-expanded="false"><?php esc_html_e('Primary Menu', 'the-spool'); ?></button>
             <?php wp_nav_menu(array('theme_location' => 'menu-1', 'menu_id' => 'primary-menu')); ?>
         </nav><!-- #site-navigation -->
-    </header><!-- #masthead --> */ ?>
+    </header><!-- #masthead -->
+        */ ?>
 
         <div id="content" class="site-content">

@@ -50,13 +50,86 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
+/*
+ *  Dynaimc Styles
+ */
+a {
+  color: #000; }
+
+a:hover,
+a:active,
+a:focus {
+  color: #311b92; }
+
+mark {
+  background: #311b92;
+  color: #fff; }
+
+button[type="button"], button[type="reset"], button[type="submit"],
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  background: #000;
+  color: #fff; }
+
+button:hover[type="button"]:hover, button:hover[type="reset"]:hover, button:hover[type="submit"]:hover, button:hover[type="button"]:focus, button:hover[type="reset"]:focus, button:hover[type="submit"]:focus, button:hover[type="button"]:active, button:hover[type="reset"]:active, button:hover[type="submit"]:active,
+button:focus[type="button"]:hover,
+button:focus[type="reset"]:hover,
+button:focus[type="submit"]:hover,
+button:focus[type="button"]:focus,
+button:focus[type="reset"]:focus,
+button:focus[type="submit"]:focus,
+button:focus[type="button"]:active,
+button:focus[type="reset"]:active,
+button:focus[type="submit"]:active,
+button:active[type="button"]:hover,
+button:active[type="reset"]:hover,
+button:active[type="submit"]:hover,
+button:active[type="button"]:focus,
+button:active[type="reset"]:focus,
+button:active[type="submit"]:focus,
+button:active[type="button"]:active,
+button:active[type="reset"]:active,
+button:active[type="submit"]:active,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+  background: #311b92; }
+
+blockquote {
+  border-left: 5px solid #311b92; }
+  blockquote p {
+    color: #311b92; }
+
+h1 {
+  color: #fff; }
+
+h2.heading {
+  color: #fff; }
+
+h3.post-heading {
+  color: #311b92; }
+
+h3.heading {
+  color: #000; }
+
+/*
+ *  Dynaimc Styles End
+ */
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%; }
 
 html,
 body {
-  height: 100%; }
+  height: 100%;
+  font-family: 'Vollkorn', serif; }
 
 .montserrat-font {
   font-family: 'Montserrat', sans-serif; }
@@ -104,14 +177,6 @@ audio:not([controls]) {
 template {
   display: none; }
 
-a,
-a:active,
-a:focus {
-  outline: none !important;
-  text-decoration: none;
-  background-color: transparent;
-  color: #311b92; }
-
 abbr[title] {
   border-bottom: 1px dotted; }
 
@@ -122,10 +187,6 @@ strong {
 dfn {
   font-style: italic; }
 
-mark {
-  background: #311b92;
-  color: #000; }
-
 small {
   font-size: 80%; }
 
@@ -133,7 +194,8 @@ sub {
   vertical-align: baseline;
   position: relative;
   font-size: 75%;
-  line-height: 0; }
+  line-height: 0;
+  bottom: -0.25em; }
 
 sup {
   vertical-align: baseline;
@@ -141,9 +203,6 @@ sup {
   font-size: 75%;
   line-height: 0;
   top: -0.5em; }
-
-sub {
-  bottom: -0.25em; }
 
 img {
   border: 0; }
@@ -165,7 +224,7 @@ code,
 kbd,
 pre,
 samp {
-  font-size: 1em; }
+  font-size: 18px; }
 
 button,
 input,
@@ -236,6 +295,11 @@ td,
 th {
   padding: 0; }
 
+a {
+  outline: none !important;
+  text-decoration: none;
+  background-color: transparent; }
+
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
@@ -245,7 +309,6 @@ input,
 select,
 textarea,
 nav {
-  font-family: 'Vollkorn', serif;
   color: #000;
   line-height: 1.5; }
 
@@ -261,22 +324,22 @@ h6 {
 h1 {
   clear: both;
   font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 24px;
-  font-weight: 900; }
+  font-size: 1.3em;
+  font-weight: 900;
+  font-weight: bold; }
   @media all and (min-width: 768px) {
     h1 {
-      font-size: 36px; } }
+      font-size: 2em; } }
 
 h2 {
-  font-size: 22px;
+  font-size: 1.2em;
   line-height: 135%; }
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 767px) {
     h2 {
-      font-size: 30px; } }
+      font-size: 1.67em; } }
   @media all and (min-width: 1367px) {
     h2 {
-      font-size: 35px; } }
+      font-size: 1.95em; } }
 
 dfn,
 cite,
@@ -287,10 +350,10 @@ i {
 blockquote {
   margin: 20px 0;
   padding: 12.5px 10px;
-  font-family: 'Vollkorn', serif;
   font-style: italic;
+  font-weight: 900;
   font-weight: bold; }
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 767px) {
     blockquote {
       margin: 20px 1.5em;
       padding: 12.5px 25px; } }
@@ -304,7 +367,7 @@ pre {
   padding: 1.6em;
   background: #eee;
   font-size: 15px;
-  font-size: 0.9375rem;
+  font-size: 0.834em;
   line-height: 1.6;
   overflow: auto; }
 
@@ -312,11 +375,6 @@ abbr,
 acronym {
   border-bottom: 1px dotted #666;
   cursor: help; }
-
-mark,
-ins {
-  background: #fff9c0;
-  text-decoration: none; }
 
 big {
   font-size: 125%; }
@@ -375,10 +433,10 @@ dd {
   margin: 0 1.5em 1.5em; }
 
 img {
-  height: auto;
   /* Make sure images are scaled correctly. */
-  max-width: 100%;
-  /* Adhere to container width. */ }
+  height: auto;
+  /* Adhere to container width. */
+  max-width: 100%; }
 
 figure {
   margin: 1em 0;
@@ -391,45 +449,35 @@ table {
 /*--------------------------------------------------------------
 # Forms
 --------------------------------------------------------------*/
-button {
-  padding: .6em 1em .4em;
-  border: 1px solid;
-  border-color: #ccc #ccc #bbb;
-  border-radius: 3px;
-  background: #e6e6e6;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 1; }
+button[type="button"], button[type="reset"], button[type="submit"],
+.btn.btn-spool[type="button"],
+.btn.btn-spool[type="reset"],
+.btn.btn-spool[type="submit"],
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 0px;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.42em;
+  text-transform: capitalize;
+  outline: none !important;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: background 0.2s ease;
+  -webkit-transition: background 0.2s ease;
+  -moz-transition: background 0.2s ease;
+  -o-transition: background 0.2s ease; }
 
-button:hover {
-  border-color: #ccc #bbb #aaa; }
-
-input[type="button"], input[type="reset"], input[type="submit"] {
-  padding: .6em 1em .4em;
-  border: 1px solid;
-  border-color: #ccc #ccc #bbb;
-  border-radius: 3px;
-  background: #e6e6e6;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 1; }
-
-input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover {
-  border-color: #ccc #bbb #aaa; }
-
-button:focus {
-  border-color: #aaa #bbb #bbb; }
-
-input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus {
-  border-color: #aaa #bbb #bbb; }
-
-button:active {
-  border-color: #aaa #bbb #bbb; }
-
-input[type="button"]:active, input[type="reset"]:active, input[type="submit"]:active {
-  border-color: #aaa #bbb #bbb; }
 input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"] {
   padding: 3px;
   border: 1px solid #ccc;
@@ -457,66 +505,8 @@ textarea {
 # Navigation
 --------------------------------------------------------------*/
 /*--------------------------------------------------------------
-## Links
---------------------------------------------------------------*/
-a {
-  color: #311b92; }
-  a:visited {
-    color: #311b92; }
-  a:hover, a:focus, a:active {
-    color: #311b92; }
-  a:focus {
-    outline: thin dotted; }
-  a:hover, a:active {
-    outline: 0; }
-
-/*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
-.main-navigation {
-  display: block;
-  float: left;
-  clear: both;
-  width: 100%; }
-  .main-navigation ul {
-    display: none;
-    list-style: none;
-    margin: 0;
-    padding-left: 0; }
-  .main-navigation li {
-    float: left;
-    position: relative; }
-  .main-navigation a {
-    display: block;
-    text-decoration: none; }
-  .main-navigation ul ul {
-    position: absolute;
-    float: left;
-    top: 1.5em;
-    left: -999em;
-    z-index: 99999;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2); }
-    .main-navigation ul ul ul {
-      left: -999em;
-      top: 0; }
-    .main-navigation ul ul a {
-      width: 200px; }
-  .main-navigation ul li:hover > ul, .main-navigation ul li.focus > ul {
-    left: auto; }
-  .main-navigation ul ul li:hover > ul, .main-navigation ul ul li.focus > ul {
-    left: 100%; }
-
-/* Small menu. */
-.menu-toggle,
-.main-navigation.toggled ul {
-  display: block; }
-
-@media screen and (min-width: 37.5em) {
-  .menu-toggle {
-    display: none; }
-
-  .main-navigation ul {
-    display: block; } }
 .site-main .comment-navigation,
 .site-main .posts-navigation,
 .site-main .post-navigation {
@@ -527,7 +517,8 @@ a {
 .posts-navigation .nav-previous,
 .post-navigation .nav-previous {
   float: left;
-  width: 50%; }
+  width: 50%;
+  text-align: left; }
 
 .comment-navigation .nav-next,
 .posts-navigation .nav-next,
@@ -556,7 +547,6 @@ a {
     color: #21759b;
     display: block;
     font-size: 14px;
-    font-size: 0.875rem;
     font-weight: bold;
     height: auto;
     left: 5px;
@@ -592,7 +582,7 @@ a {
   margin-right: auto; }
 
 .remove-margin {
-  margin: 0; }
+  margin: 0 !important; }
 
 /*--------------------------------------------------------------
 # Clearings
@@ -649,15 +639,12 @@ object {
 /*--------------------------------------------------------------
 # Common Theme Styles
 --------------------------------------------------------------*/
-.home h1.heading {
-  color: #fff; }
-
 h1.heading.logo {
-  max-width: 209px;
   margin: 0 auto;
   margin-top: 18px;
   margin-bottom: 18px;
-  color: #000;
+  max-width: 209px;
+  height: auto;
   text-align: center;
   transition: all .35s ease; }
   h1.heading.logo a {
@@ -674,36 +661,32 @@ h1.heading.logo {
   margin-bottom: 10px;
   transition: all .35s ease; }
 
-h2.heading {
-  color: #fff; }
-
 h3.post-heading {
-  color: #311b92;
-  font-size: 28px;
+  font-size: 1.56em;
   line-height: 120%;
   text-align: center; }
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 767px) {
     h3.post-heading {
       margin: 20px 0; } }
 
 .post-info {
-  text-align: center;
-  margin: 10px 0; }
+  margin: 10px 0;
+  text-align: center; }
   .post-info h3.heading.author-name {
     margin-bottom: 8px;
-    font-size: 24px;
+    font-size: 1.33em;
     color: #000; }
-    @media all and (min-width: 768px) {
+    @media all and (min-width: 767px) {
       .post-info h3.heading.author-name {
         font-size: 38px; } }
   .post-info p.author-info {
     font-style: italic;
     line-height: 100%;
     color: #000000;
-    font-size: 18px; }
+    font-size: 1em; }
     @media all and (min-width: 768px) {
       .post-info p.author-info {
-        font-size: 24px; } }
+        font-size: 2.167em; } }
   .post-info .post-meta-info {
     margin-top: 25px; }
     .post-info .post-meta-info p {
@@ -715,28 +698,20 @@ h3.post-heading {
         font-size: 16px;
         color: #121212; }
 
-.btn.btn-spool {
-  font-family: 'Montserrat', sans-serif;
-  border-radius: 0;
-  background: #000;
-  color: #fff;
-  font-size: 16px;
-  text-transform: capitalize; }
-
 /*--------------------------------------------------------------
 # Single Page Styles
 --------------------------------------------------------------*/
-@media all and (max-width: 768px) {
+@media all and (max-width: 767px) {
   .post-header-info {
     padding-top: 65px; } }
 .post-header-info .post-header-info-desktop {
   width: 100%; }
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 767px) {
     .post-header-info .post-header-info-desktop {
       display: block;
       margin: 0 auto;
       margin-top: 15px;
-      width: 60%; } }
+      width: 75%; } }
   .post-header-info .post-header-info-desktop p {
     text-align: center; }
 
@@ -744,9 +719,9 @@ h3.post-heading {
   color: #000; }
   .post-content h4 {
     margin-top: 25px;
-    font-size: 18px;
+    font-size: 1em;
     line-height: 140%; }
-    @media all and (min-width: 768px) {
+    @media all and (min-width: 767px) {
       .post-content h4 {
         margin-top: 30px; } }
     @media all and (min-width: 1367px) {
@@ -756,31 +731,29 @@ h3.post-heading {
       margin-top: 0; }
   .post-content p {
     color: #000;
-    font-size: 18px;
+    font-size: 1em;
     line-height: 160%; }
     @media all and (min-width: 1367px) {
       .post-content p {
-        font-size: 20px; } }
-  .post-content blockquote {
-    border-left: 5px solid #311b92; }
-    .post-content blockquote p {
-      color: #311b92;
-      font-weight: bold;
-      font-size: 30px;
-      line-height: 130%; }
-      .post-content blockquote p span {
-        font-weight: bold !important; }
-      @media all and (max-width: 768px) {
-        .post-content blockquote p {
-          font-size: 20px;
-          line-height: 120%; } }
+        font-size: 1.11em; } }
+  .post-content blockquote p {
+    font-weight: bold;
+    font-size: 1.667em;
+    line-height: 130%; }
+    .post-content blockquote p span {
+      font-weight: bold !important; }
+    @media all and (max-width: 768px) {
+      .post-content blockquote p {
+        font-size: 1.111em;
+        line-height: 120%; } }
+  .post-content .unspoool-content {
+    background: #311b92; }
   .post-content .unspoool-content {
     margin-top: 50px; }
     .post-content .unspoool-content h3.heading {
       margin: 0;
       padding: 10px;
       max-width: 125px;
-      background: #311b92;
       color: #fff;
       font-size: 18px;
       text-align: center; }
@@ -1043,7 +1016,7 @@ h3.post-heading {
         width: 60%; } }
     .home-page header h2.heading span {
       display: inline; }
-      @media (min-width: 768px) {
+      @media (min-width: 767px) {
         .home-page header h2.heading span {
           display: block; } }
 .home-page .meta-info {
@@ -1107,10 +1080,6 @@ h3.post-heading {
     @media all and (max-width: 768px) {
       .main-menu.active .navbar-expand {
         margin-top: 10px; } }
-  .main-menu .heading.logo.active a img {
-    display: none !important; }
-    .main-menu .heading.logo.active a img.white-logo {
-      display: block !important; }
 
 .navbar-expand {
   position: relative;
@@ -1200,7 +1169,7 @@ h3.post-heading {
         color: #FFF;
         text-decoration: none;
         overflow: hidden; }
-        @media all and (min-width: 768px) {
+        @media all and (min-width: 767px) {
           .overlay ul li a {
             padding: 15px 0;
             font-size: 32px; } }
@@ -1312,21 +1281,6 @@ progress {
   color: #000; }
   .share-this-post p span a:hover {
     color: #311b92; }
-
-/*--------------------------------------------------------------
-# Change logo on home page
---------------------------------------------------------------*/
-.white-logo {
-  display: none; }
-
-.home .logo .white-logo {
-  display: block;
-  margin: 0 auto;
-  transition: all .35s ease; }
-.home .logo .black-logo {
-  display: none;
-  margin: 0 auto;
-  transition: all .35s ease; }
 
 /*--------------------------------------------------------------
 # About  Page

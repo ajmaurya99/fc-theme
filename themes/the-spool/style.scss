@@ -51,6 +51,84 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
+
+// Define theme color variable
+$theme-color: #311b92;
+
+/*
+ *  Dynaimc Styles
+ */
+
+// theme color line no 66
+a {
+  color: #000;
+}
+
+a:hover,
+a:active,
+a:focus {
+  color: $theme-color;
+}
+
+mark {
+  background: $theme-color;
+  color: #fff;
+}
+
+button,
+input {
+  &[type="button"],
+  &[type="reset"],
+  &[type="submit"] {
+    background: #000;
+    color: #fff;
+  }
+}
+
+button:hover,
+button:focus,
+button:active,
+input {
+  &[type="button"]:hover,
+  &[type="reset"]:hover,
+  &[type="submit"]:hover,
+  &[type="button"]:focus,
+  &[type="reset"]:focus,
+  &[type="submit"]:focus,
+  &[type="button"]:active,
+  &[type="reset"]:active,
+  &[type="submit"]:active {
+    background: $theme-color;
+  }
+}
+
+blockquote {
+  border-left: 5px solid $theme-color;
+  p {
+    color: $theme-color;
+  }
+}
+
+h1 {
+  color: #fff;
+}
+
+h2.heading {
+  color: #fff;
+}
+
+h3.post-heading {
+  color: $theme-color;
+}
+
+h3.heading {
+  color: #000;
+}
+
+/*
+ *  Dynaimc Styles End
+ */
+
 html {
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -59,10 +137,8 @@ html {
 html,
 body {
   height: 100%;
+  font-family: 'Vollkorn', serif;
 }
-
-// Define theme color variable
-$theme-color: #311b92;
 
 .montserrat-font {
   font-family: 'Montserrat', sans-serif;
@@ -119,15 +195,6 @@ template {
   display: none;
 }
 
-a,
-a:active,
-a:focus {
-  outline: none !important;
-  text-decoration: none;
-  background-color: transparent;
-  color: #311b92;
-}
-
 abbr[title] {
   border-bottom: 1px dotted;
 }
@@ -141,11 +208,6 @@ dfn {
   font-style: italic;
 }
 
-mark {
-  background: #311b92;
-  color: #000;
-}
-
 small {
   font-size: 80%;
 }
@@ -155,6 +217,7 @@ sub {
   position: relative;
   font-size: 75%;
   line-height: 0;
+  bottom: -0.25em;
 }
 
 sup {
@@ -163,10 +226,6 @@ sup {
   font-size: 75%;
   line-height: 0;
   top: -0.5em;
-}
-
-sub {
-  bottom: -0.25em;
 }
 
 img {
@@ -194,7 +253,7 @@ code,
 kbd,
 pre,
 samp {
-  font-size: 1em;
+  font-size: 18px;
 }
 
 button,
@@ -223,7 +282,8 @@ html input[type="button"] {
 }
 
 input {
-  &[type="reset"], &[type="submit"] {
+  &[type="reset"],
+  &[type="submit"] {
     -webkit-appearance: button;
     cursor: pointer;
   }
@@ -290,6 +350,12 @@ th {
   padding: 0;
 }
 
+a {
+  outline: none !important;
+  text-decoration: none;
+  background-color: transparent;
+}
+
 /*--------------------------------------------------------------
 # Typography
 --------------------------------------------------------------*/
@@ -300,7 +366,6 @@ input,
 select,
 textarea,
 nav {
-  font-family: 'Vollkorn', serif;
   color: #000;
   line-height: 1.5;
 }
@@ -318,22 +383,22 @@ h6 {
 h1 {
   clear: both;
   font-family: 'Montserrat', sans-serif;
-  font-weight: bold;
-  font-size: 24px;
+  font-size: 1.3em;
   font-weight: 900;
+  font-weight: bold;
   @media all and (min-width: 768px) {
-    font-size: 36px;
+    font-size: 2em;
   }
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 1.2em;
   line-height: 135%;
-  @media all and (min-width: 768px) {
-    font-size: 30px;
+  @media all and (min-width: 767px) {
+    font-size: 1.67em;
   }
   @media all and (min-width: 1367px) {
-    font-size: 35px;
+    font-size: 1.95em;
   }
 }
 
@@ -347,10 +412,10 @@ i {
 blockquote {
   margin: 20px 0;
   padding: 12.5px 10px;
-  font-family: 'Vollkorn', serif;
   font-style: italic;
+  font-weight: 900;
   font-weight: bold;
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 767px) {
     margin: 20px 1.5em;
     padding: 12.5px 25px;
   }
@@ -366,7 +431,7 @@ pre {
   padding: 1.6em;
   background: #eee;
   font-size: 15px;
-  font-size: 0.9375rem;
+  font-size: 0.834em;
   line-height: 1.6;
   overflow: auto;
 }
@@ -375,12 +440,6 @@ abbr,
 acronym {
   border-bottom: 1px dotted #666;
   cursor: help;
-}
-
-mark,
-ins {
-  background: #fff9c0;
-  text-decoration: none;
 }
 
 big {
@@ -462,10 +521,10 @@ dd {
 }
 
 img {
-  height: auto;
   /* Make sure images are scaled correctly. */
-  max-width: 100%;
+  height: auto;
   /* Adhere to container width. */
+  max-width: 100%;
 }
 
 figure {
@@ -482,62 +541,50 @@ table {
 # Forms
 --------------------------------------------------------------*/
 
-button {
-  padding: .6em 1em .4em;
-  border: 1px solid;
-  border-color: #ccc #ccc #bbb;
-  border-radius: 3px;
-  background: #e6e6e6;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 12px;
-  font-size: 0.75rem;
-  line-height: 1;
-}
-
-button:hover {
-  border-color: #ccc #bbb #aaa;
-}
-
+button,
+.btn.btn-spool,
 input {
   &[type="button"], &[type="reset"], &[type="submit"] {
-    padding: .6em 1em .4em;
-    border: 1px solid;
-    border-color: #ccc #ccc #bbb;
-    border-radius: 3px;
-    background: #e6e6e6;
-    color: rgba(0, 0, 0, 0.8);
-    font-size: 12px;
-    font-size: 0.75rem;
-    line-height: 1;
-
+    display: inline-block;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.42em;
+    text-transform: capitalize;
+    outline: none !important;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: background 0.2s ease;
+    -webkit-transition: background 0.2s ease;
+    -moz-transition: background 0.2s ease;
+    -o-transition: background 0.2s ease;
   }
 }
 
 input {
-  &[type="button"]:hover, &[type="reset"]:hover, &[type="submit"]:hover {
-    border-color: #ccc #bbb #aaa;
-  }
-}
-
-button:focus {
-  border-color: #aaa #bbb #bbb;
-}
-
-input {
-  &[type="button"]:focus, &[type="reset"]:focus, &[type="submit"]:focus {
-    border-color: #aaa #bbb #bbb;
-  }
-}
-
-button:active {
-  border-color: #aaa #bbb #bbb;
-}
-
-input {
-  &[type="button"]:active, &[type="reset"]:active, &[type="submit"]:active {
-    border-color: #aaa #bbb #bbb;
-  }
-  &[type="text"], &[type="email"], &[type="url"], &[type="password"], &[type="search"], &[type="number"], &[type="tel"], &[type="range"], &[type="date"], &[type="month"], &[type="week"], &[type="time"], &[type="datetime"], &[type="datetime-local"], &[type="color"] {
+  &[type="text"],
+  &[type="email"],
+  &[type="url"],
+  &[type="password"],
+  &[type="search"],
+  &[type="number"],
+  &[type="tel"],
+  &[type="range"],
+  &[type="date"],
+  &[type="month"],
+  &[type="week"],
+  &[type="time"],
+  &[type="datetime"],
+  &[type="datetime-local"],
+  &[type="color"] {
     padding: 3px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -557,7 +604,21 @@ select {
 }
 
 input {
-  &[type="text"]:focus, &[type="email"]:focus, &[type="url"]:focus, &[type="password"]:focus, &[type="search"]:focus, &[type="number"]:focus, &[type="tel"]:focus, &[type="range"]:focus, &[type="date"]:focus, &[type="month"]:focus, &[type="week"]:focus, &[type="time"]:focus, &[type="datetime"]:focus, &[type="datetime-local"]:focus, &[type="color"]:focus {
+  &[type="text"]:focus,
+  &[type="email"]:focus,
+  &[type="url"]:focus,
+  &[type="password"]:focus,
+  &[type="search"]:focus,
+  &[type="number"]:focus,
+  &[type="tel"]:focus,
+  &[type="range"]:focus,
+  &[type="date"]:focus,
+  &[type="month"]:focus,
+  &[type="week"]:focus,
+  &[type="time"]:focus,
+  &[type="datetime"]:focus,
+  &[type="datetime-local"]:focus,
+  &[type="color"]:focus {
     color: #111;
   }
 }
@@ -572,112 +633,10 @@ textarea {
 /*--------------------------------------------------------------
 # Navigation
 --------------------------------------------------------------*/
-/*--------------------------------------------------------------
-## Links
---------------------------------------------------------------*/
-
-a {
-  color: #311b92;
-  &:visited {
-    color: #311b92;
-  }
-  &:hover, &:focus, &:active {
-    color: #311b92;
-  }
-  &:focus {
-    outline: thin dotted;
-  }
-  &:hover, &:active {
-    outline: 0;
-  }
-}
 
 /*--------------------------------------------------------------
 ## Menus
 --------------------------------------------------------------*/
-
-.main-navigation {
-  display: block;
-  float: left;
-  clear: both;
-  width: 100%;
-  ul {
-    display: none;
-    list-style: none;
-    margin: 0;
-    padding-left: 0;
-  }
-  li {
-    float: left;
-    position: relative;
-  }
-  a {
-    display: block;
-    text-decoration: none;
-  }
-  ul ul {
-    position: absolute;
-    float: left;
-    top: 1.5em;
-    left: -999em;
-    z-index: 99999;
-    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-    ul {
-      left: -999em;
-      top: 0;
-    }
-    a {
-      width: 200px;
-    }
-    li {
-    }
-  }
-  li {
-    &:hover > a, &.focus > a {
-    }
-  }
-  ul {
-    ul {
-      :hover > a, .focus > a {
-      }
-      a {
-        &:hover, &.focus {
-        }
-      }
-    }
-    li {
-      &:hover > ul, &.focus > ul {
-        left: auto;
-      }
-    }
-    ul li {
-      &:hover > ul, &.focus > ul {
-        left: 100%;
-      }
-    }
-  }
-  .current_page_item > a,
-  .current-menu-item > a,
-  .current_page_ancestor > a,
-  .current-menu-ancestor > a {
-  }
-}
-
-/* Small menu. */
-
-.menu-toggle,
-.main-navigation.toggled ul {
-  display: block;
-}
-
-@media screen and (min-width: 37.5em) {
-  .menu-toggle {
-    display: none;
-  }
-  .main-navigation ul {
-    display: block;
-  }
-}
 
 .site-main {
   .comment-navigation,
@@ -693,6 +652,7 @@ a {
 .post-navigation .nav-previous {
   float: left;
   width: 50%;
+  text-align: left;
 }
 
 .comment-navigation .nav-next,
@@ -725,7 +685,6 @@ a {
     color: #21759b;
     display: block;
     font-size: 14px;
-    font-size: 0.875rem;
     font-weight: bold;
     height: auto;
     left: 5px;
@@ -769,7 +728,7 @@ a {
 }
 
 .remove-margin {
-  margin: 0;
+  margin: 0 !important;
 }
 
 /*--------------------------------------------------------------
@@ -820,6 +779,7 @@ a {
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
+
 /* Globally hidden elements when Infinite Scroll is supported and in use. */
 
 .infinite-scroll {
@@ -850,18 +810,13 @@ object {
 /*--------------------------------------------------------------
 # Common Theme Styles
 --------------------------------------------------------------*/
-.home {
-  h1.heading {
-    color: #fff;
-  }
-}
 
 h1.heading.logo {
-  max-width: 209px;
   margin: 0 auto;
   margin-top: 18px;
   margin-bottom: 18px;
-  color: #000;
+  max-width: 209px;
+  height: auto;
   text-align: center;
   transition: all .35s ease;
   a {
@@ -883,42 +838,39 @@ h1.heading.logo {
   transition: all .35s ease;
 }
 
-h2.heading {
-  color: #fff;
-}
-
 h3.post-heading {
-  color: #311b92;
-  font-size: 28px;
+  font-size: 1.56em;
   line-height: 120%;
   text-align: center;
-  @media all and (min-width: 768px) {
+  @media all and (min-width: 767px) {
     margin: 20px 0;
   }
 }
 
 .post-info {
+  margin: 10px 0;
   text-align: center;
   h3.heading {
     &.author-name {
       margin-bottom: 8px;
-      font-size: 24px;
+      font-size: 1.33em;
       color: #000;
-      @media all and (min-width: 768px) {
+      @media all and (min-width: 767px) {
         font-size: 38px;
       }
     }
   }
+
   p.author-info {
     font-style: italic;
     line-height: 100%;
     color: #000000;
-    font-size: 18px;
+    font-size: 1em;
     @media all and (min-width: 768px) {
-      font-size: 24px;
+      font-size: 2.167em;
     }
   }
-  margin: 10px 0;
+
   .post-meta-info {
     p {
       display: inline-block;
@@ -935,29 +887,21 @@ h3.post-heading {
   }
 }
 
-.btn.btn-spool {
-  font-family: 'Montserrat', sans-serif;
-  border-radius: 0;
-  background: #000;
-  color: #fff;
-  font-size: 16px;
-  text-transform: capitalize;
-}
-
 /*--------------------------------------------------------------
 # Single Page Styles
 --------------------------------------------------------------*/
+
 .post-header-info {
-  @media all and(max-width: 768px) {
+  @media all and(max-width: 767px) {
     padding-top: 65px;
   }
   .post-header-info-desktop {
     width: 100%;
-    @media all and(min-width: 768px) {
+    @media all and(min-width: 767px) {
       display: block;
       margin: 0 auto;
       margin-top: 15px;
-      width: 60%;
+      width: 75%;
     }
     p {
       text-align: center;
@@ -969,9 +913,9 @@ h3.post-heading {
   color: #000;
   h4 {
     margin-top: 25px;
-    font-size: 18px;
+    font-size: 1em;
     line-height: 140%;
-    @media all and(min-width: 768px) {
+    @media all and(min-width: 767px) {
       margin-top: 30px;
     }
     @media all and(min-width: 1367px) {
@@ -983,34 +927,34 @@ h3.post-heading {
   }
   p {
     color: #000;
-    font-size: 18px;
+    font-size: 1em;
     line-height: 160%;
     @media all and(min-width: 1367px) {
-      font-size: 20px;
+      font-size: 1.11em;
     }
   }
   blockquote {
-    border-left: 5px solid #311b92;
     p {
-      color: #311b92;
       font-weight: bold;
-      font-size: 30px;
+      font-size: 1.667em;
       line-height: 130%;
       span {
         font-weight: bold !important;
       }
       @media all and(max-width: 768px) {
-        font-size: 20px;
+        font-size: 1.111em;
         line-height: 120%;
       }
     }
+  }
+  .unspoool-content {
+    background: $theme-color;
   }
   .unspoool-content {
     h3.heading {
       margin: 0;
       padding: 10px;
       max-width: 125px;
-      background: #311b92;
       color: #fff;
       font-size: 18px;
       text-align: center;
@@ -1019,14 +963,14 @@ h3.post-heading {
   }
   .highlight-info {
     padding: 20px;
-    border: 2px solid #311b92;
-    color: #311b92;
+    border: 2px solid $theme-color;
+    color: $theme-color;
     font-size: 18px;
     @media all and (min-width: 768px) {
       padding: 50px;
     }
     p {
-      color: #311b92;
+      color: $theme-color;
     }
   }
 }
@@ -1135,7 +1079,7 @@ h3.post-heading {
   }
 
   .author-image-text {
-    background-color: #311b92;
+    background-color: $theme-color;
     @media all and (max-width: 1000px) {
       padding: 25px;
     }
@@ -1286,7 +1230,7 @@ h3.post-heading {
       color: #000;
       text-decoration: underline;
       &:hover {
-        color: #311b92;
+        color: $theme-color;
       }
     }
   }
@@ -1305,7 +1249,7 @@ h3.post-heading {
         font-weight: bold;
         color: #000;
         &:hover {
-          color: #311b92;
+          color: $theme-color;
         }
       }
     }
@@ -1335,7 +1279,7 @@ h3.post-heading {
     }
   }
   header {
-    background-color: #311b92;
+    background-color: $theme-color;
     h2.heading {
       display: inline-block;
       margin: 0 auto;
@@ -1349,7 +1293,7 @@ h3.post-heading {
       }
       span {
         display: inline;
-        @media (min-width: 768px) {
+        @media (min-width: 767px) {
           display: block;
         }
       }
@@ -1407,7 +1351,6 @@ h3.post-heading {
 --------------------------------------------------------------*/
 
 $color-background: #F5F5F5;
-$color-main: #311b92;
 $color-active: #FFF;
 $color-link: #FFF;
 
@@ -1451,16 +1394,6 @@ $button-width: 30px;
       }
       @media all and (max-width: 768px) {
         margin-top: 10px;
-      }
-    }
-  }
-  .heading.logo.active {
-    a {
-      img {
-        display: none !important;
-        &.white-logo {
-          display: block !important;
-        }
       }
     }
   }
@@ -1525,7 +1458,7 @@ $button-width: 30px;
   left: 0;
   width: 100%;
   height: 0%;
-  background: $color-main;
+  background: $theme-color;
   opacity: 0;
   visibility: hidden;
   overflow: hidden;
@@ -1582,7 +1515,7 @@ $button-width: 30px;
         text-decoration: none;
         overflow: hidden;
 
-        @media all and (min-width: 768px) {
+        @media all and (min-width: 767px) {
           padding: 15px 0;
           font-size: 32px;
         }
@@ -1622,7 +1555,7 @@ progress {
   top: auto !important;
   bottom: 0 !important;
   height: 7px !important;
-  color: #311b92 !important;
+  color: $theme-color !important;
 }
 
 /* Mailchimp Styling */
@@ -1630,7 +1563,7 @@ progress {
   margin: 0 auto;
   padding: 45px 5px;
   max-width: 250px;
-  background: #311b92;
+  background: $theme-color;
   p {
     text-align: center;
     &.title {
@@ -1646,7 +1579,7 @@ progress {
       width: 85%;
       border: 0;
       border-radius: 0;
-      color: #311b92;
+      color: $theme-color;
       text-align: center;
       font-family: 'Montserrat', sans-serif;
     }
@@ -1663,25 +1596,25 @@ progress {
     font-size: 15px;
   }
   .mc4wp-form ::-webkit-input-placeholder { /* WebKit browsers */
-    color: #311b92;
+    color: $theme-color;
     font-size: 14px;
     text-align: center;
   }
 
   .mc4wp-form :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: #311b92;
+    color: $theme-color;
     font-size: 14px;
     text-align: center;
   }
 
   .mc4wp-form ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #311b92;
+    color: $theme-color;
     font-size: 14px;
     text-align: center;
   }
 
   .mc4wp-form :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: #311b92;
+    color: $theme-color;
     font-size: 14px;
     text-align: center;
   }
@@ -1728,32 +1661,9 @@ progress {
         padding: 5px;
         color: #000;
         &:hover {
-          color: #311b92;
+          color: $theme-color;
         }
       }
-    }
-  }
-}
-
-/*--------------------------------------------------------------
-# Change logo on home page
---------------------------------------------------------------*/
-
-.white-logo {
-  display: none;
-}
-
-.home {
-  .logo {
-    .white-logo {
-      display: block;
-      margin: 0 auto;
-      transition: all .35s ease;
-    }
-    .black-logo {
-      display: none;
-      margin: 0 auto;
-      transition: all .35s ease;
     }
   }
 }

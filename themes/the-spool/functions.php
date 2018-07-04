@@ -76,8 +76,8 @@ if (!function_exists('the_spool_setup')) :
 
         // Add theme support for Custom Logo.
         add_theme_support('custom-logo', array(
-            'width' => 402,
-            'height' => 73,
+            'width' => 209,
+            'height' => 38,
             'flex-width' => true,
         ));
 
@@ -404,15 +404,6 @@ function display_instagram_element()
     <?php
 }
 
-function display_footer_text()
-{
-    ?>
-    <textarea rows="4" cols="50" name="footer_text" id="footer_text" value="<?php echo get_option('footer_text'); ?>">
-        <?php echo get_option('footer_text'); ?>
-    </textarea>
-    <?php
-}
-
 
 function display_heading_text()
 {
@@ -430,7 +421,6 @@ function display_theme_panel_fields()
     add_settings_field("facebook_url", "Facebook URL", "display_facebook_element", "theme-options", "section");
     add_settings_field("twitter_url", "Twitter URL", "display_twitter_element", "theme-options", "section");
     add_settings_field("instagram_url", "Instagram URL", "display_instagram_element", "theme-options", "section");
-    add_settings_field("footer_text", "Footer Text", "display_footer_text", "theme-options", "section");
     add_settings_field("heading_text", "Heading Text", "display_heading_text", "theme-options", "section");
 
     register_setting("section", "facebook_url");
@@ -441,3 +431,4 @@ function display_theme_panel_fields()
 }
 
 add_action("admin_init", "display_theme_panel_fields");
+
